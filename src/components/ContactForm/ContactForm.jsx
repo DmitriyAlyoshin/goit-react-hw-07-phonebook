@@ -6,7 +6,7 @@ import 'yup-phone';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/contactsOperations';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -22,17 +22,6 @@ import {
   Btn,
 } from './ContactForm.styled';
 
-// const schema = yup.object().shape({
-//     name: yup
-//         .string()
-//         .min(2)
-//         .max(70)
-//         .required(),
-//     number: yup
-//         .number()
-//         .min(4)
-//         .required(),
-// });
 
 const schema = yup.object().shape({
   name: yup
@@ -43,12 +32,7 @@ const schema = yup.object().shape({
       'Name may contain only letters, apostrophe, dash and spaces. For example Dmytro, Sergiy Dykiy'
     )
     .required(),
-  number: yup.string()
-    // .phone(
-    //   'EN',
-    //   true,
-    //   'Phone number must be a valid phone number for region UA, digits and can contain spaces, dashes, parentheses and can start with +'
-    // )
+  phone: yup.string()
     .required(),
 });
 
@@ -57,7 +41,7 @@ const nanoid = customAlphabet('1234567890', 3);
 const initialValues = {
   id: '',
   name: '',
-  number: '',
+  phone: '',
 };
 
 export const ContactForm = () => {
@@ -68,7 +52,7 @@ export const ContactForm = () => {
     const newContact = {
       id: 'id-' + nanoid(),
       name: values.name,
-      number: values.number,
+      phone: values.phone,
     };
 
     if (contacts.find(contact => contact.name === newContact.name)) {
@@ -89,23 +73,24 @@ export const ContactForm = () => {
         <Container>
           <Wrapper>
             <Label htmlFor="name">Name:</Label>
-                      <Input
-                          name="name"
-                          type="text"
-                          id="name"
-                          placeholder="Contact Name" />
+            <Input
+              name="name"
+              type="text"
+              id="name"
+              placeholder="Contact Name"
+            />
             <ErrorMsg name="name" component="div" />
           </Wrapper>
 
           <Wrapper>
-            <Label htmlFor="number">Number:</Label>
+            <Label htmlFor="phone">Number:</Label>
             <Input
-              name="number"
+              name="phone"
               type="tel"
-              id="number"
+              id="phone"
               placeholder="+38-050-123-45-67"
             />
-            <ErrorMsg name="number" component="div" />
+            <ErrorMsg name="phone" component="div" />
           </Wrapper>
 
           <Btn type="submit">Add contact</Btn>

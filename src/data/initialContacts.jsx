@@ -1,3 +1,5 @@
+//Знаю, що не треба, але хай буде
+
 export const initialContacts = [
   { id: 'id-1', name: 'Eden Clements', number: '+380636450179' },
   { id: 'id-2', name: 'Annie Copeland', number: '+380962279126' },

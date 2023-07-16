@@ -21,9 +21,6 @@ export const Filter = () => {
         id="filter"
         value={filter}
         onChange={changeFilter}
-        
-        // onChange={e => dispatch(setContactFilter(e.currentTarget.value))}
-
         placeholder="Search..."
       />
     </Wrapper>
