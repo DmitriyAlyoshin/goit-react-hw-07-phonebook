@@ -11,8 +11,6 @@ import { addContact } from 'redux/contactsOperations';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-// import { customAlphabet } from 'nanoid';
-
 import {
   Container,
   Input,
@@ -21,7 +19,6 @@ import {
   ErrorMsg,
   Btn,
 } from './ContactForm.styled';
-
 
 const schema = yup.object().shape({
   name: yup
@@ -32,11 +29,8 @@ const schema = yup.object().shape({
       'Name may contain only letters, apostrophe, dash and spaces. For example Dmytro, Sergiy Dykiy'
     )
     .required(),
-  phone: yup.string()
-    .required(),
+  phone: yup.string().required(),
 });
-
-// const nanoid = customAlphabet('1234567890', 3);
 
 const initialValues = {
   id: '',
@@ -50,7 +44,6 @@ export const ContactForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const newContact = {
-      // id: 'id-' + nanoid(),
       name: values.name,
       phone: values.phone,
     };
