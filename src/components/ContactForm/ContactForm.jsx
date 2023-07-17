@@ -50,7 +50,7 @@ export const ContactForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const newContact = {
-      id: 'id-' + nanoid(),
+      // id: 'id-' + nanoid(),
       name: values.name,
       phone: values.phone,
     };
