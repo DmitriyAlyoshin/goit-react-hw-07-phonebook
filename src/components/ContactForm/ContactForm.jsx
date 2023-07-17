@@ -11,7 +11,7 @@ import { addContact } from 'redux/contactsOperations';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import { customAlphabet } from 'nanoid';
+// import { customAlphabet } from 'nanoid';
 
 import {
   Container,
@@ -36,7 +36,7 @@ const schema = yup.object().shape({
     .required(),
 });
 
-const nanoid = customAlphabet('1234567890', 3);
+// const nanoid = customAlphabet('1234567890', 3);
 
 const initialValues = {
   id: '',
